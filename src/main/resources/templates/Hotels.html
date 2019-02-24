@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="../image/backimage1.jpg" type="image/png">
+<title>EHotel Room Reservation</title>
+<!-- Bootstrap CSS -->
+<!--//Royal link-->
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="../css/nice-select/css/nice-select.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<!-- main css -->
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/my.css">
+<!-- //lux link-->
+
+<link rel="stylesheet" href="../css/Lux/css/animate.css">
+<link rel="stylesheet" href="../css/Lux/css/icomoon.css">
+<link rel="stylesheet" href="../css/Lux/css/bootstrap.css">
+<link rel="stylesheet" href="../css/Lux/css/magnific-popup.css">
+<link rel="stylesheet" href="../css/Lux/css/flexslider.css">
+<link rel="stylesheet" href="../css/Lux/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/Lux/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/Lux/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="../css/Lux/css/style.css">
+<link rel="stylesheet" href="../css/my.css">
+<script src="../js/Lux/js/modernizr-2.6.2.min.js"></script>
+<script src="../js/Lux/js/respond.min.js"></script>
+
+</head>
+<style>
+.navigation-bar {
+	background-color: #CCC;
+	opacity: 0.6;
+}
+</style>
+<body>
+	<div class="navigation-bar">
+		<nav class="colorlib-nav" role="navigation">
+
+			<div class="top-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-2">
+							<div id="colorlib-logo">
+								<a href="../Index.html">EHotel</a>
+							</div>
+						</div>
+						<div class="col-xs-10 text-right menu-1">
+							<ul>
+								<li><a th:href="@{/User/Home}">Home</a></li>
+								<li class="active"><a th:href="@{/User/ViewHotels}">Hotels</a></li>
+								<li><a th:href="@{/User/myreservation}">MyReservations</a></li>
+
+								<li><a th:href="@{/about}">About</a></li>
+								<li><a th:href="@{/contact}">Contact</a></li>
+								<li><a th:href="@{/logout}">logout</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<div class="section_title text-md-left">
+			<h2 class="title_color">Available Hotels</h2>
+		</div>
+
+
+		<div class="listbox" th:each="hotel:${hotels}">
+
+			<ul class="list-group">
+				<li class="list-group-item justify-content-between">
+					<div class="col-md-3">
+						<p class="name" th:text="${hotel.hotelName}"></p>
+						<p class="address" th:text="${hotel.subCity}"></p>
+						<p class="address" th:text="${hotel.city}"></p>
+						<p class="address" th:text="${hotel.phone}"></p>
+					</div>
+					<div class="col-md-3 text-center">
+						<form method="GET" th:action="@{/User/booknow}"
+							th:object="${hotels}">
+							<input type="hidden" name="hotelId" th:value="${hotel.hotelId}" />
+							<input type="submit" value="BOOK" th:id="${hotel.hotelId}" />
+						</form>
+					</div>
+					<div class="text-center">
+						<form method="GET" th:action="@{/User/Profile}"
+							th:object="${hotels}">
+							<input type="hidden" name="hotelId" th:value="${hotel.hotelId}" />
+							<input type="submit" value="View Hotel Profile"
+								th:id="${hotel.hotelId}" />
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--<div id="colorlib-hero">
+            <!--<table style="width:100%">
+
+                <tr>
+                    <th></th>
+                    <th></th>
+                    </tr>
+                <tr th:each="hotel : ${hotels}">
+                    <td><p th:text="${hotel.hotelName}"></p></td>
+                    <td>
+                            <input type="hidden" name="hotelId" th:value="${hotel.hotelId}">
+                            <input type="hidden" name="hotelName" th:value="${hotel.hotelName}">
+                            <input type="button" value="BOOK" th:id="${hotel.hotelId}"/>
+
+                    </td>
+                </tr>
+
+            </table>
+          </div>-->
+
+	</div>
+	</section>
+
+	<!--footer -->
+	<footer id="colorlib-footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-3 colorlib-widget">
+					<h4>EHotel Reservation</h4>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia
+						reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+					<p>
+					<ul class="colorlib-social-icons">
+						<li><a href="#"><i class="icon-twitter"></i></a></li>
+						<li><a href="#"><i class="icon-facebook"></i></a></li>
+						<li><a href="#"><i class="icon-linkedin"></i></a></li>
+						<li><a href="#"><i class="icon-dribbble"></i></a></li>
+					</ul>
+					</p>
+				</div>
+				<div class="col-md-3 colorlib-widget">
+					<h4>Quick Links</h4>
+					<p>
+					<ul class="colorlib-footer-links">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Hotels</a></li>
+						<li><a href="pages/Rooms.html">Rooms</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+					</p>
+				</div>
+				<div class="col-md-3">
+					<h4>Recents Blog Post</h4>
+					<ul class="colorlib-footer-links">
+						<li><a href="#">The Ultimate Packing List For Female
+								Travelers</a></li>
+						<li><a href="#">How These 5 People Found The Path to
+								Their Dream Trip</a></li>
+						<li><a href="#">A Definitive Guide to the Best Dining and
+								Drinking Venues in the City</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Contact Information</h4>
+					<ul class="colorlib-footer-links">
+						<li>6 Kilo , <br> Addis Ababa , Ethiopia
+						</li>
+						<li><a href="tel:+251930856544">+ 930856544</a></li>
+						<li><a href="mailto:kirubelayehu@gmail.com">kirubelayehu@gmail.com</a></li>
+						<li><a href="">Ehotel.com</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block"> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;<script>
+								document.write(new Date().getFullYear());
+							</script> All rights reserved |<a href="Index.html" target="_blank">EHotel</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</small>
+
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!--//royal script-->
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/popper.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.ajaxchimp.min.js"></script>
+	<script src="../js/mail-script.js"></script>
+	<script src="../js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../js/nice-select/js/jquery.nice-select.js"></script>
+	<script src="../js/mail-script.js"></script>
+	<script src="../js/stellar.js"></script>
+	<script src="../js/simpleLightbox.min.js"></script>
+	<script src="../js/custom.js"></script>
+
+	<!--//lux script-->
+	<script src="../js/Lux/js/jquery.min.js"></script>
+	<script src="../js/Lux/js/jquery.easing.1.3.js"></script>
+	<script src="../js/Lux/js/bootstrap.min.js"></script>
+	<script src="../js/Lux/js/jquery.waypoints.min.js"></script>
+	<script src="../js/Lux/js/jquery.flexslider-min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/Lux/js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/Lux/js/magnific-popup-options.js"></script>
+	<script src="../js/Lux/js/bootstrap-datepicker.js"></script>
+	<script src="../js/Lux/js/main.js"></script>
+
+
+</body>
+</html>

@@ -59,8 +59,8 @@ footer -colorlib-footer-links, p {
 				<div class="collapse navbar-collapse navbar-light"
 					id="navbarsExample05">
 					<ul class="navbar-nav ml-auto pl-lg-5 pl-0">
-						
-						
+
+
 						<li class="nav-item"><a class="nav-link active"
 							href="blog.html">Register Hotel</a></li>
 						<li class="nav-item"><a class="nav-link " href="about.html">About</a>
@@ -109,8 +109,10 @@ footer -colorlib-footer-links, p {
 			<div class="row">
 				<div class="col-md-6">
 					<h2 class="mb-5">Registration Form</h2>
-					<c:url var="logoutUrl" value="register" />
+					<c:url var="logoutUrl" value="registerHotel" />
 					<form method="post" th:object="${register}">
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" />
 						<div class="row">
 							<div class="col-sm-12 form-group">
 
@@ -143,8 +145,8 @@ footer -colorlib-footer-links, p {
 									<!--                           <span class="fa fa-calendar icon" style="position: absolute; right: 15px; top: 10px;"></span> -->
 									<input type='text' class="form-control" th:field="*{subCity}" />
 									<span class="text-danger"
-										th:if="${#fields.hasErrors('subCity')}"
-										th:errors="*{hotelName}">SubCity </span>
+										th:if="${#fields.hasErrors('subCity')}" th:errors="*{subCity}">SubCity
+									</span>
 								</div>
 							</div>
 
@@ -155,11 +157,15 @@ footer -colorlib-footer-links, p {
 								<h3 class="mb-5">Hotel Managers's</h3>
 								<div class="col-md-12 form-group">
 									<label for="email">Email</label> <input type="email"
-										th:field="*{email}" class="form-control ">
+										th:field="*{email}" class="form-control "> <span
+										class="text-danger" th:if="${#fields.hasErrors('email')}"
+										th:errors="*{email}">SubCity </span>
 								</div>
 								<div class="col-md-12 form-group">
 									<label for="password">password</label> <input type="password"
-										th:field="*{password}" class="form-control ">
+										th:field="*{password}" class="form-control "> <span
+										class="text-danger" th:if="${#fields.hasErrors('email')}"
+										th:errors="*{email}">SubCity </span>
 								</div>
 							</div>
 
@@ -268,12 +274,10 @@ footer -colorlib-footer-links, p {
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						<small class="block"> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							Copyright &copy;<script>
 								document.write(new Date().getFullYear());
-							</script>
-							All rights reserved |<a href="Index.html" target="_blank">EHotel</a>
+							</script> All rights reserved |<a href="Index.html" target="_blank">EHotel</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</small>
 
