@@ -29,7 +29,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"),name="user",schema = "eHotel")
 public class User implements UserDetails{
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)

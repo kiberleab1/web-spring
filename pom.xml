@@ -11,9 +11,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hhhkk</groupId>
-	<artifactId>ehotels</artifactId>
+	<artifactId>eHotels</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ehotels</name>
+	<name>eHotels</name>
 	<description>Spring Project For Education</description>
 
 	<properties>
