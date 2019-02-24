@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="image/backimage1.jpg" type="image/png">
+    <title>EHotel Room Reservation</title>
+    <!-- Bootstrap CSS -->
+    <!--//Royal link-->
+    <link rel="stylesheet" th:href="@{../css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{../css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{../css/bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{../css/nice-select/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{../css/owl.carousel.min.css}">
+    <!-- main css -->
+    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/responsive.css}">
+
+   <!-- //lux link-->
+
+    <link rel="stylesheet" th:href="@{../css/Lux/css/animate.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/flexslider.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/bootstrap-datepicker.css}">
+    <link rel="stylesheet" th:href="@{../fonts/flaticon/font/flaticon.css}">
+    <link rel="stylesheet" th:href="@{../css/Lux/css/style.css}">
+    <script th:src="@{../js/Lux/js/modernizr-2.6.2.min.js}"></script>
+    <script th:src="@{../js/Lux/js/respond.min.js}"></script>
+
+
+
+
+</head>
+<style>
+    .navigation-bar{
+        background: #CCC;
+        opacity: 0.6;
+    }
+</style>
+
+<body>
+<div class="navigation-bar" th:object="${editprofile}">
+<nav class="colorlib-nav" role="navigation">
+    <div class="top">
+        <div class="container">
+            <div class="row">
+                <!--<div class="col-xs-4">-->
+                    <!--<p class="site">www.yoursitehere.com</p>-->
+                <!--</div>-->
+                <div class="col-xs-8 text-right">
+                    <p class="num" th:text=" *{phone}">Call</p>
+                    <ul class="colorlib-social">
+                        <!--<li><a href="#"><i class="icon-twitter"></i></a></li>-->
+                        <!--<li><a href="#"><i class="icon-facebook"></i></a></li>-->
+                        <!--<li><a href="#"><i class="icon-linkedin"></i></a></li>-->
+                        <!--<li><a href="#"><i class="icon-dribbble"></i></a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="colorlib-logo"><a href="Index.html">EHotel</a></div>
+                </div>
+                <div class="col-xs-10 text-right menu-1">
+                    <ul>
+                          <li ><a th:href="@{/Hotel/profile}">Home</a></li>
+                        <li class="active"><a th:href="@{/Hotel/editprofile}">Edit Profile </a></li>
+                       <!--  <li><a th:href="pages/Rooms.html">Rooms</a></li> -->
+                        <li><a th:href="@{/Hotel/Requests}">Book Requests</a></li>
+                        <li><a th:href="@{/about}">About</a></li>
+                        <li><a th:href="@{/contact}">Contact</a></li>
+                        <li><a th:href="@{/logout}"/>Logout</a></li>
+                   	
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>
+
+
+
+
+</div>
+
+
+
+	<section class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2 class="mb-5">Edit Hotel Profile</h2>
+					
+					<form method="post" th:object="${editprofile}" th:action="@{/Hotel/editprofile}">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+
+								<label for="">Hotel Name</label>
+
+								<div style="position: relative;">
+									<!--                      <span class="fa fa-calendar icon" style="position: absolute; right: 15px; top: 10px;"></span> -->
+									<input type="hidden" name="hotelId" th:value="*{hotelId}"/>
+						
+									<input type='text' name="hotelName" class="form-control" th:value="*{hotelName}" />
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('hotelName')}"
+										th:errors="*{hotelName}">Name Error </span>
+
+								</div>
+								
+							</div>
+							<div class="col-sm-12 form-group">
+
+								<label for="">Phone</label>
+
+								<div style="position: relative;">
+									<!--                      <span class="fa fa-calendar icon" style="position: absolute; right: 15px; top: 10px;"></span> -->
+									<input type='text' name="phone" class="form-control" th:value="*{phone}" />
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('hotelName')}"
+										th:errors="*{hotelName}">Name Error </span>
+
+								</div>
+								
+							</div>
+
+							<div class="col-sm-12 form-group">
+
+								<label for="">City</label>
+								<div style="position: relative;">
+									<!--                           <span class="fa fa-calendar icon" style="position: absolute; right: 15px; top: 10px;"></span> -->
+									<input type='text' name="city" class="form-control" th:value="*{City}" />
+									<span class="text-danger" th:if="${#fields.hasErrors('city')}"
+										th:errors="*{city}">City Error </span>
+								</div>
+							</div>
+							<div class="col-sm-12 form-group">
+
+								<label for="">SubCity</label>
+								<div style="position: relative;">
+									<!--                           <span class="fa fa-calendar icon" style="position: absolute; right: 15px; top: 10px;"></span> -->
+									<input type='text' name="subCity" class="form-control" th:value="*{subCity}" />
+									<span class="text-danger"
+										th:if="${#fields.hasErrors('subCity')}"
+										th:errors="*{hotelName}">SubCity </span>
+								</div>
+							</div>
+
+						</div>
+						<h2></h2>
+						
+				<div class="col-md-1"></div>
+					</p>
+						
+						<input type="submit" th:href="@{/hotelProfile}" value="Update" class="btn btn-primary btn-sm">
+				</form></div></div></div>
+	</section>
+	<!-- END section -->
+
+	<a th:href="@{/Hotel/Image}">edit Image</a>
+
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+
+
+
+
+<!--//royal script-->
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/popper.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.ajaxchimp.min.js"></script>
+<script src="../js/mail-script.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/nice-select/js/jquery.nice-select.js"></script>
+<script src="../js/mail-script.js"></script>
+<script src="../js/stellar.js"></script>
+<script src="../js/simpleLightbox.min.js"></script>
+<script src="../js/custom.js"></script>
+
+<!--//lux script-->
+<script src="js/Lux/js/jquery.min.js"></script>
+<script src="js/Lux/js/jquery.easing.1.3.js"></script>
+<script src="js/Lux/js/bootstrap.min.js"></script>
+<script src="js/Lux/js/jquery.waypoints.min.js"></script>
+<script src="js/Lux/js/jquery.flexslider-min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/Lux/js/jquery.magnific-popup.min.js"></script>
+<script src="js/Lux/js/magnific-popup-options.js"></script>
+<script src="js/Lux/js/bootstrap-datepicker.js"></script>
+<script src="js/Lux/js/main.js"></script>
+
+
+</body>
+</html>
