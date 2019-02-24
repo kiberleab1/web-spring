@@ -1,0 +1,7 @@
+---
+applications:
+   - name: ehotels
+     buildpack: java_buildpack
+     path: target/eHotels-0.0.1-SNAPSHOT.jar
+     services:
+             - ehotel 
