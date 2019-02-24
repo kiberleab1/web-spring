@@ -29,7 +29,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"),name="user",schema = "eHotel")
 public class User implements UserDetails{
 	 	@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,7 +75,7 @@ public class User implements UserDetails{
 	                    name = "user_id", referencedColumnName = "id"),
 	            inverseJoinColumns = @JoinColumn(
 	                    name = "role_id", referencedColumnName = "id"))*/
-	    @javax.persistence.OneToOne(fetch = FetchType.LAZY,
+	    @javax.persistence.OneToOne(fetch = FetchType.EAGER,
         cascade =  CascadeType.ALL,
         mappedBy = "user")
 	    private Role role;
