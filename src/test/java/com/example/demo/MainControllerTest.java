@@ -2,7 +2,6 @@ package com.example.demo;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -53,9 +52,8 @@ public class MainControllerTest {
 	@WithMockUser(username = "kiberleabeniyew12@gmail.com", password = "12345678")
 	public void testAdminLogin() throws Exception {
 		mockMvc.perform(formLogin().user("kiberleabeniyew12@gmail.com").password("12345678"))
-				/*.andExpect(redirectedUrl("User/Home")).andExpect(status().isFound())*/.andExpect(authenticated().withRoles("USER"));
-						/*view().name("UserHome"))
-				.andExpect(content().string(containsString("Call: +251930856544")));*/
+				.andExpect(redirectedUrl("User/Home")).andExpect(status().isFound()).andExpect(view().name("UserHome"))
+				.andExpect(content().string(containsString("Call: +251930856544")));
 	}
 
 	@Test(expected = StackOverflowError.class)
@@ -72,11 +70,4 @@ public class MainControllerTest {
 				.andExpect(view().name("uploadPost")).andExpect(content().string(containsString("Post")));
 	}
 
-	@Test
-
-	@WithMockUser(username = "test@test.com", password = "12345678")
-	public void testControllerGet2() throws Exception {
-		mockMvc.perform(get("/User/booknow?hotelId=3")).andExpect(status().isOk()).andExpect(view().name("booknow"))
-				.andExpect(content().string(containsString("hotel")));
-	}
 }
