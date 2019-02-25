@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ehotels
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+    
+info:
+  contact:
+    email: kiberleabeniyew@gmail.com
+    phone: 094-167-6278
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: true
+
+      
